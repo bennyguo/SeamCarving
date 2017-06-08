@@ -27,3 +27,12 @@
 *.exe
 *.out
 *.app
+
+# Images
+*.jpg
+*.jpeg
+*.png
+*.bmp
+
+# Mac
+.DS_Store
