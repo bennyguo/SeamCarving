@@ -16,7 +16,7 @@
 class SimpleGradient
 {
 private:
-    int RGBGradientSq(cv::Vec3b c1, cv::Vec3b c2)
+    int RGBGradientSq(cv::Vec3b& c1, cv::Vec3b& c2)
     {
         int db = c1[0] - c2[0], dg = c1[1] - c2[1], dr = c1[2] - c2[2];
         return db * db + dg * dg + dr * dr;

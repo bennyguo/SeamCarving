@@ -14,14 +14,12 @@ using namespace cv;
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    Mat img = imread("./1.jpeg");
+    Mat img = imread("./8.jpeg");
     Workstation ws(img);
-    Mat img_carved;
-    Mat img_seam;
-    ws.shrink(100,0, img_carved);
-    ws.drawSeams(img_seam);
+    Mat img_enlarged;
+    ws.enlarge(400, 1, img_enlarged);
     namedWindow("test");
-    imshow("test", img_seam);
+    imshow("test", img_enlarged);
     waitKey(0);
     return 0;
 }

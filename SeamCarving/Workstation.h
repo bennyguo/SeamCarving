@@ -10,6 +10,8 @@
 #define Workstation_h
 
 #include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
 #include <vector>
 #include "Seam.h"
 #include "GradientOperator.h"
@@ -248,6 +250,51 @@ private:
             }
         }
     }
+    void markSeams(int** exist)
+    {
+        for(int i = 0, len = this->seams.size(); i < len; i ++)
+        {
+            Seam& seam = this->seams[i];
+            if(seam.axis == 1)
+            {
+                for(int j = 0, seamLen = seam.size(); j < seamLen; j ++)
+                {
+                    int row = seam[j].row, col = seam[j].col;
+                    int count = 0, pos = 0;
+                    while(true)
+                    {
+                        if(exist[row][pos] != -1)
+                        {
+                            count += 1;
+                            if(count > col)
+                                break;
+                        }
+                        pos += 1;
+                    }
+                    exist[row][pos] = -1;
+                }
+            }
+            else if(seam.axis == 0)
+            {
+                for(int j = 0, seamLen = seam.size(); j < seamLen; j ++)
+                {
+                    int row = seam[j].row, col = seam[j].col;
+                    int count = 0, pos = 0;
+                    while(true)
+                    {
+                        if(exist[pos][col] != -1)
+                        {
+                            count += 1;
+                            if(count > row)
+                                break;
+                        }
+                        pos += 1;
+                    }
+                    exist[pos][col] = -1;
+                }
+            }
+        }
+    }
     
 public:
     Workstation(cv::Mat& img): img(img)
@@ -270,49 +317,57 @@ public:
         int** exist = new int*[this->rows];
         for(int i = 0; i < this->rows; i ++)
             exist[i] = new int[this->cols]{0};
-        for(int i = 0, len = this->seams.size(); i < len; i ++)
+        this->markSeams(exist);
+        for(int i = 0; i < this->rows; i ++)
+            for(int j = 0; j < this-> cols; j ++)
+                if(exist[i][j] == -1)
+                    img.at<cv::Vec3b>(i, j) = cv::Vec3b(0, 0, 255);
+    }
+    void enlarge(int n, int axis, cv::Mat& result)
+    {
+        if(axis == 1)
         {
-            Seam& seam = this->seams[i];
-            if(seam.axis == 1)
+            if(n >= this->cols)
             {
-                for(int j = 0, seamLen = seam.size(); j < seamLen; j ++)
-                {
-                    int row = seam[j].row, col = seam[j].col;
-                    int count = 0, pos = 0;
-                    while(true)
-                    {
-                        if(exist[row][pos] != -1)
-                        {
-                            count += 1;
-                            if(count > col)
-                                break;
-                        }
-                        pos += 1;
-                    }
-                    exist[row][pos] = -1;
-                    img.at<cv::Vec3b>(row, pos) = cv::Vec3b(0, 0, 255);
-                    
-                }
+                printf("N can't be larger than image width: %d\n", this->cols);
+                return;
             }
-            else if(seam.axis == 0)
+            cv::Mat seamd;
+            this->calculateSeams(0, n, seamd);
+            int** exist = new int*[this->rows];
+            for(int i = 0; i < this->rows; i ++)
+                exist[i] = new int[this->cols]{0};
+            this->markSeams(exist);
+            cv::copyMakeBorder(this->img, result, 0, 0, 0, n, cv::BORDER_CONSTANT);
+            for(int i = 0; i < this->rows; i ++)
             {
-                for(int j = 0, seamLen = seam.size(); j < seamLen; j ++)
+                int x = 0;
+                for(int j = 0; j < this->cols; j ++)
                 {
-                    int row = seam[j].row, col = seam[j].col;
-                    int count = 0, pos = 0;
-                    while(true)
+                    if(exist[i][j] == 0)
                     {
-                        if(exist[pos][col] != -1)
-                        {
-                            count += 1;
-                            if(count > row)
-                                break;
-                        }
-                        pos += 1;
+                        result.at<cv::Vec3b>(i, x) = this->img.at<cv::Vec3b>(i, j);
+                        x += 1;
                     }
-                    exist[pos][col] = -1;
-                    img.at<cv::Vec3b>(pos, col) = cv::Vec3b(0, 0, 255);
-                    
+                    else
+                    {
+                        cv::Vec3b c1 = this->img.at<cv::Vec3b>(i, j);
+                        if(j >= 1)
+                        {
+                            cv::Vec3b c0 = this->img.at<cv::Vec3b>(i, j - 1);
+                            result.at<cv::Vec3b>(i, x) = cv::Vec3b((c0[0] + c1[0]) / 2, (c0[1] + c1[1]) / 2, (c0[2] + c1[2]) / 2);
+                        }
+                        else
+                            result.at<cv::Vec3b>(i, x) = c1;
+                        if(j < this->cols - 1)
+                        {
+                            cv::Vec3b c2 = this->img.at<cv::Vec3b>(i, j + 1);
+                            result.at<cv::Vec3b>(i, x + 1) = cv::Vec3b((c2[0] + c1[0]) / 2, (c2[1] + c1[1]) / 2, (c2[2] + c1[2]) / 2);
+                        }
+                        else
+                            result.at<cv::Vec3b>(i, x + 1) = c1;
+                        x += 2;
+                    }
                 }
             }
         }
