@@ -22,7 +22,7 @@ private:
     cv::Mat& img;
     int rows, cols, size;
     std::vector<Seam> seams;
-    SimpleGradient gradientProcessor;
+    GradientOperator gradientProcessor;
     void calculateSeams(int r, int c, cv::Mat& img)
     {
         this->img.copyTo(img);
@@ -297,11 +297,16 @@ private:
     }
     
 public:
-    Workstation(cv::Mat& img): img(img)
+    Workstation(cv::Mat& img, int GRADIENT_TYPE): img(img)
     {
         this->rows = img.rows;
         this->cols = img.cols;
         this->size = this->rows * this->cols;
+        if(GRADIENT_TYPE == 0)
+        {
+            SimpleGradient processor;
+            this->gradientProcessor = processor;
+        }
     }
     ~Workstation()
     {

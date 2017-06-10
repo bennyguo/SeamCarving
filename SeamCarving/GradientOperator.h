@@ -13,7 +13,22 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include "Seam.h"
 
-class SimpleGradient
+class GradientOperator
+{
+public:
+    GradientOperator()
+    {
+        
+    }
+    ~GradientOperator()
+    {
+        
+    }
+    void gradient(cv::Mat& img, int** gradientMat, int rows, int cols) {}
+    void updateGradient(cv::Mat& img, int** gradientMat, Seam& seam, int rows, int cols, int axis) {}
+};
+
+class SimpleGradient: public GradientOperator
 {
 private:
     int RGBGradientSq(cv::Vec3b& c1, cv::Vec3b& c2)
@@ -23,16 +38,6 @@ private:
     }
     
 public:
-    SimpleGradient()
-    {
-        
-    }
-    
-    ~SimpleGradient()
-    {
-        
-    }
-    
     void gradient(cv::Mat& img, int** gradientMat, int rows, int cols)
     {
         cv::Mat imgWithBorder;

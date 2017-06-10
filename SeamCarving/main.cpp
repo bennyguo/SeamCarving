@@ -15,7 +15,7 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     Mat img = imread("./8.jpeg");
-    Workstation ws(img);
+    Workstation ws(img, 0);
     Mat img_enlarged;
     ws.enlarge(400, 1, img_enlarged);
     namedWindow("test");
