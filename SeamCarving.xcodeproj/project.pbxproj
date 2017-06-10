@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CB3B56131EE8379500734176 /* GradientOperator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB3B56121EE8379500734176 /* GradientOperator.cpp */; };
 		CB3B56161EE837C500734176 /* Workstation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB3B56141EE837C500734176 /* Workstation.cpp */; };
+		CB3B56201EEBB6CE00734176 /* ImageMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB3B561F1EEBB6CE00734176 /* ImageMarker.cpp */; };
 		CBA60B551E8A26FC00B8CBEC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CBA60B541E8A26FC00B8CBEC /* main.cpp */; };
 		CBA60B9B1E8A287A00B8CBEC /* libjpeg.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA60B5B1E8A287A00B8CBEC /* libjpeg.8.dylib */; };
 		CBA60B9C1E8A287A00B8CBEC /* libjpeg.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA60B5C1E8A287A00B8CBEC /* libjpeg.8.dylib */; };
@@ -94,6 +95,8 @@
 		CB3B56141EE837C500734176 /* Workstation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Workstation.cpp; sourceTree = "<group>"; };
 		CB3B56171EE837EE00734176 /* Workstation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Workstation.h; sourceTree = "<group>"; };
 		CB3B561D1EE9361F00734176 /* Seam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seam.h; sourceTree = "<group>"; };
+		CB3B561E1EEBB6BE00734176 /* ImageMarker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageMarker.h; sourceTree = "<group>"; };
+		CB3B561F1EEBB6CE00734176 /* ImageMarker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageMarker.cpp; sourceTree = "<group>"; };
 		CBA60B511E8A26FC00B8CBEC /* SeamCarving */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SeamCarving; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA60B541E8A26FC00B8CBEC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		CBA60B5B1E8A287A00B8CBEC /* libjpeg.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjpeg.8.dylib; path = /usr/local/Cellar/jpeg/8d/lib/libjpeg.8.dylib; sourceTree = "<absolute>"; };
@@ -263,6 +266,8 @@
 				CB3B56121EE8379500734176 /* GradientOperator.cpp */,
 				CB3B56141EE837C500734176 /* Workstation.cpp */,
 				CB3B56171EE837EE00734176 /* Workstation.h */,
+				CB3B561E1EEBB6BE00734176 /* ImageMarker.h */,
+				CB3B561F1EEBB6CE00734176 /* ImageMarker.cpp */,
 			);
 			path = SeamCarving;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBA60B551E8A26FC00B8CBEC /* main.cpp in Sources */,
+				CB3B56201EEBB6CE00734176 /* ImageMarker.cpp in Sources */,
 				CB3B56131EE8379500734176 /* GradientOperator.cpp in Sources */,
 				CB3B56161EE837C500734176 /* Workstation.cpp in Sources */,
 			);

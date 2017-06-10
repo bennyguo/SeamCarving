@@ -24,8 +24,8 @@ public:
     {
         
     }
-    void gradient(cv::Mat& img, int** gradientMat, int rows, int cols) {}
-    void updateGradient(cv::Mat& img, int** gradientMat, Seam& seam, int rows, int cols, int axis) {}
+    virtual void gradient(cv::Mat& img, int** gradientMat, int rows, int cols) = 0;
+    virtual void updateGradient(cv::Mat& img, int** gradientMat, Seam& seam, int rows, int cols, int axis) = 0;
 };
 
 class SimpleGradient: public GradientOperator
@@ -40,6 +40,7 @@ private:
 public:
     void gradient(cv::Mat& img, int** gradientMat, int rows, int cols)
     {
+        printf("FUCK");
         cv::Mat imgWithBorder;
         cv::copyMakeBorder(img, imgWithBorder, 1, 1, 1, 1, cv::BORDER_REPLICATE);
         for(int i = 1; i <= rows; i ++)

@@ -9,17 +9,21 @@
 #include <iostream>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 #include "Workstation.h"
+#include "GradientOperator.h"
 using namespace cv;
 using namespace std;
 
+
 int main(int argc, const char * argv[]) {
-    Mat img = imread("./8.jpeg");
-    Workstation ws(img, 0);
-    Mat img_enlarged;
-    ws.enlarge(400, 1, img_enlarged);
+    GradientOperator* simple = new SimpleGradient();
+    Mat img = imread("./7.jpeg");
+    Workstation ws(img, simple);
+    Mat removed;
+    ws.remove(removed);
     namedWindow("test");
-    imshow("test", img_enlarged);
+    imshow("test", removed);
     waitKey(0);
     return 0;
 }
