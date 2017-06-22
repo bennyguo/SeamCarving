@@ -84,10 +84,8 @@ private:
             img = img(cv::Range::all(), cv::Range(0, cols));
             canvas = canvas(cv::Range::all(), cv::Range(0, cols));
             this->gradientProcessor->updateGradient(img, gradientMat, seam, rows, cols, 1);
-            //this->gradientProcessor->gradient(img, gradientMat, rows, cols);
             removed += nRemove;
             removeProtect += nProtect;
-            //printf("Remove %d points this time, %d to go\n", nRemove, remove - removed);
         }
         printf("Remove %d seams\n", this->seams.size());
         printf("Protect: %d/%d\n", removeProtect, protect);
@@ -164,8 +162,6 @@ private:
                     img = img(cv::Range(0, rows), cv::Range(0, cols));
                     this->gradientProcessor->updateGradient(img, gradientMat, seamH, rows, cols, 0);
                 }
-//                printf("Horizontal E: %d, Vertical E: %d\n", horizontalE, verticalE);
-//                printf("cc: %d, rr: %d\n", cc, rr);
             }
         }
     }

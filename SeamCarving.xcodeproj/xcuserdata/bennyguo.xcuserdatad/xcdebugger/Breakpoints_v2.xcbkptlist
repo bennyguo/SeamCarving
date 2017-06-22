@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeamCarving/main.cpp"
-            timestampString = "518777589.731858"
+            timestampString = "519746748.843584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169">
+            startingLineNumber = "174"
+            endingLineNumber = "174">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeamCarving/Workstation.h"
-            timestampString = "518777478.757131"
+            timestampString = "519728459.025381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "368"
+            endingLineNumber = "368"
             landmarkName = "Workstation(cv::Mat&amp; img, GradientOperator* processor)"
             landmarkType = "7">
          </BreakpointContent>
@@ -55,28 +55,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SeamCarving/GradientOperator.h"
-            timestampString = "518777142.809985"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "updateGradient(cv::Mat&amp; img, int** gradientMat, Seam&amp; seam, int rows, int cols, int axis)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "SeamCarving/Workstation.h"
-            timestampString = "518777478.757131"
+            timestampString = "519728459.025381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "calculateSeams(int r, int c, cv::Mat&amp; img)"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeamCarving/Workstation.h"
-            timestampString = "518777478.757131"
+            timestampString = "519728459.025381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "findVerticalSeam(int** gradientMat, int** dpMat, int** pathMat, Seam&amp; seam, int rows, int cols)"
             landmarkType = "7">
          </BreakpointContent>
@@ -260,16 +244,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeamCarving/Workstation.h"
-            timestampString = "518777478.757131"
+            timestampString = "519728459.025381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "findVerticalSeam(int** gradientMat, int** dpMat, int** pathMat, Seam&amp; seam, int rows, int cols)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeamCarving/GradientOperator.h"
+            timestampString = "519735482.997459"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "~GradientOperator()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
