@@ -144,7 +144,9 @@ private:
                 seamH.axis = 0, seamV.axis = 1;
                 int horizontalE = rr < r? this->findHorizontalSeam(gradientMat, dpMat, pathMat, seamH, rows, cols) : 1<<20;
                 int verticalE = cc < c? this->findVerticalSeam(gradientMat, dpMat, pathMat, seamV, rows, cols) : 1<<20;
-                if(horizontalE > verticalE)
+                double HEAvg = (double)horizontalE / img.cols;
+                double VEAvg = (double)verticalE / img.rows;
+                if(HEAvg > VEAvg)
                 {
                     this->seams.push_back(seamV);
                     this->carve(img, gradientMat, seamV, 1);
