@@ -17,17 +17,13 @@ using namespace std;
 
 
 int main(int argc, const char * argv[]) {
-    GradientOperator* simple = new EuclidGradient();
-    Mat img = imread("./5.jpg");
-    Workstation ws(img, simple);
-    Mat result;
-//    ws.shrink(0, 200, result);
-//    ws.enlarge(200, 1, result);
-    ws.remove(result);
-//    ws.drawSeams(result);
-    namedWindow("result");
-    imshow("result", result);
-    imwrite("test.jpg", result);
-    waitKey(0);
+    GradientOperator* grad = new AbsGradient();
+    Mat img = imread("1.jpeg");
+    Workstation ws(img, grad);
+    Mat result, seams;
+    ws.shrink(0, img.cols / 4, result);
+    ws.drawSeams(seams);
+    imwrite("shrink.jpg", result);
+    imwrite("seams.jpg", seams);
     return 0;
 }
